@@ -11,9 +11,9 @@
 | `SMALLINT`       | 2바이트 정수                  | 30000             |
 | `INT`, `INTEGER` | 4바이트 정수                  | 1,000,000         |
 | `BIGINT`         | 8바이트 정수                  | 9,000,000,000     |
-| `FLOAT(M,D)`     | 소수점 포함 실수 (4바이트)     | 3.14              |
-| `DOUBLE`         | 더 정밀한 실수 (8바이트)       | 3.1415926535      |
-| `DECIMAL(M,D)`   | 고정 소수점 숫자 (금액 표현용) | 12345.67          |
+| `FLOAT(M,D)`     | 소수점 포함 실수 (4바이트)     | 3.14              | # 소수점 8자리까지
+| `DOUBLE`         | 더 정밀한 실수 (8바이트)       | 3.1415926535      | # 소수점 16자리까지
+| `DECIMAL(M,D)`   | 고정 소수점 숫자 (금액 표현용) | 12345.67          | # 대부분의 경우에는 DECIMAL 사용
 
 ---
 
@@ -21,10 +21,12 @@
 
 | 자료형        | 설명                              | 예시               |
 |----------------|-----------------------------------|--------------------|
-| `CHAR(n)`      | 고정 길이 문자열 (n자)            | `'Y'`, `'YES'`     |
-| `VARCHAR(n)`   | 가변 길이 문자열 (n자까지)        | `'Hello world'`    |
-| `TEXT`         | 긴 텍스트 (최대 65,535자)         | 긴 설명글          |
+| `CHAR(n)`      | 고정 길이 문자열 (n자)            | `'Y'`, `'YES'`     | # 무조건 n칸만큼의 문자열
+| `VARCHAR(n)`   | 가변 길이 문자열 (n자까지)        | `'Hello world'`    | # 사용된 문자열 칸만큼만 사용, 나머지는 반환
+| `TEXT`         | 긴 텍스트 (최대 65,535자)         | 긴 설명글          | # varchar의 긴 문자열 버전
 | `ENUM`         | 지정된 값 중 하나만 저장 가능     | `'male'`, `'female'` |
+
+# char 예시 : 주민등록번호, 전화번호
 
 ---
 
@@ -39,3 +41,33 @@
 | `YEAR`       | 연도 (4자리)                   | `'2025'`                |
 
 */
+
+select now(); # 현재시간 조회
+select current_date, current_time;
+select current_timestamp;
+
+
+# 한 줄 주석
+-- 한 줄 주석
+/*
+ 범위
+ 주석
+ */
+
+
+-- === TABLE ===
+/*
+ - 데이터(값)을 보관하는 주체
+ - 항상 row(행), column(열)로 이루어져 있음
+ - database(schema) 하위에만 존재 가능
+ */
+
+SELECT * FROM tbl_category;
+SELECT * FROM tbl_menu;
+SELECT * FROM tbl_order;
+SELECT * FROM tbl_order_menu;
+SELECT * FROM tbl_payment;
+SELECT * FROM tbl_payment_order;
+
+# 테이블 구조 조회(컬럼명, 자료형, 제약조건, 추가설정)
+DESC tbl_menu;
