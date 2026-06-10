@@ -28,7 +28,7 @@ FROM
 WHERE
     menu_name LIKE '%밥%'
     AND
-    menu_price BETWEEN 20000 AND 30000
+    menu_price BETWEEN 20000 AND 30000;
 
 /*
  ### Q3.
@@ -71,4 +71,4 @@ WHERE
     AND
     menu_price = 13000
     AND
-    orderable_status != 'N'
+    orderable_status != 'N';
