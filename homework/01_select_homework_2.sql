@@ -25,26 +25,29 @@ LIMIT
     3;
 
 # 문제에서 JOIN을 요구하기에, 문제 삭제됨.
-# /*
-#  ### Q2.
-#
-#  재직 중인 ‘대리’들의 직원명, 직급명, 급여, 사원번호, 이메일, 전화번호, 입사일을 출력하세요.
-#
-#  단, 급여를 기준으로 내림차순 출력하세요.
-#  */
-# SELECT * FROM job; # 직급 데이터 조회용
-#
-# SELECT
-#     EMP_NAME `직원명`,
-#     JOB_CODE `직급명`,
-#     SALARY `급여`,
-#     EMP_ID `사원번호`,
-#     EMAIL `이메일`,
-#     PHONE `전화번호`,
-#     HIRE_DATE `입사일`
-# FROM
-#     employee
-# WHERE
-#     JOB_CODE = 'J6' # job table 상 '대리' == 'J6'
-# ORDER BY
-#     SALARY DESC;
+/*
+ ### Q2.
+
+ 재직 중인 ‘대리’들의 직원명, 직급명, 급여, 사원번호, 이메일, 전화번호, 입사일을 출력하세요.
+
+ 단, 급여를 기준으로 내림차순 출력하세요.
+ */
+SELECT * FROM job; # 직급 데이터 조회용
+
+SELECT
+    EMP_NAME `직원명`,
+    e.JOB_CODE `직급명`,
+    SALARY `급여`,
+    EMP_ID `사원번호`,
+    EMAIL `이메일`,
+    PHONE `전화번호`,
+    HIRE_DATE `입사일`
+FROM
+    employee as e
+INNER JOIN
+    job j
+    ON e.JOB_CODE = j.JOB_CODE
+WHERE
+    j.JOB_NAME = '대리'
+ORDER BY
+    SALARY DESC;
