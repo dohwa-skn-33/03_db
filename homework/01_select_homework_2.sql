@@ -49,5 +49,7 @@ INNER JOIN
     ON e.JOB_CODE = j.JOB_CODE
 WHERE
     j.JOB_NAME = '대리'
+    AND
+    ENT_YN = 'N'
 ORDER BY
     SALARY DESC;
