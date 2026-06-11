@@ -139,7 +139,7 @@ SELECT
 FROM
     tbl_menu
 CROSS JOIN
-        tbl_category;
+    tbl_category;
 
 
 # SELF JOIN
